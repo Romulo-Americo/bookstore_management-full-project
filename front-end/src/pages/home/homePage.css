@@ -1,0 +1,15 @@
+.mainFront{ 
+    margin-left: 250px;
+}
+
+.titlePages{
+    width: 600px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.521);
+}
+
+.sectionGrid{
+    display: grid;
+    grid-template-columns: 100px 600px;
+    justify-content: space-between;
+    
+}

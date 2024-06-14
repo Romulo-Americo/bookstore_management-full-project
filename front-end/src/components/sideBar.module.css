@@ -1,0 +1,28 @@
+nav{
+   display: flex;
+   border-right: 2px solid rgb(60, 158, 173) ;
+   width: 200px;
+   height: 100%;
+   font-weight: bold;
+    position: fixed;
+    
+}
+nav ul{
+    margin-top: 150px;
+    list-style: none;
+    align-items: center;
+
+}
+nav ul li{
+    margin-bottom: 25px;
+}
+
+nav ul li a{
+    color: black;
+    text-decoration: none;
+}
+
+nav ul li:hover{
+    border-bottom: 3px solid  rgb(60, 158, 173) ;;
+    border-radius: 3px;
+}

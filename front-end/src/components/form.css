@@ -1,0 +1,44 @@
+
+
+.formAdd{
+    background-color: rgba(248, 254, 255, 1);
+    box-shadow: 10px 10px 15px 5px rgb(102, 102, 102);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    width: 550px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.formAdd label{
+    margin-right: 230px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.formAdd input{
+    margin-bottom: 30px;
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    border-style: none;
+    background-color:rgba(186, 215, 227, 1);
+    
+}
+
+.formAdd button{
+    border-radius: 10px;
+    border-style: none;
+    width: 150px;
+    height: 40px;
+    background-color: rgba(75, 193, 210, 1);
+    color: white;
+}
+
+.formAdd button:hover{
+    background-color: rgb(48, 126, 138);
+}
+
