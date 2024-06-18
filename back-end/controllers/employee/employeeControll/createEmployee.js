@@ -18,7 +18,7 @@ module.exports = (req, res) => {
     // Hasheando a senha
     bcrypt.hash(password, 10, (err, hashedPassword) => {
         if (err) {
-            return res.status(500).send(`Error hashing password: ${err}`);
+            return res.send({message:`Error hashing password: ${err}`});
         }
         Employee.create({
             name,
@@ -28,10 +28,10 @@ module.exports = (req, res) => {
             typeEmployeeId
         })
         .then(() => {
-            res.send('Employee created successfully');
+            res.send({message: 'Employee created successfully'});
         })
         .catch((err) => {
-            res.status(500).send(`Error in creating Employee: ${err}`);
+            res.send({message:`Error in creating Employee: ${err}`});
         });
     });
 };

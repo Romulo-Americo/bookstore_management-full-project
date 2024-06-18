@@ -6,10 +6,30 @@ import SideBar from "../../components/SideBar";
 import Button from '../../components/Button';
 import Table from '../../components/Table';
 import ActionsButtons from '../../components/ActionsButtons';
+import { useEffect, useState } from 'react';
 
 
 
 function Clients(){
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/client/readClient')
+            .then((res) => res.json())
+            .then((data) => {
+                const dataList = data.map(item => ({
+                    name: item.name,
+                    registration: item.registration,
+                    points: item.points,
+                    client_id: item.client_id 
+                }));
+                setData(dataList);
+            })
+            .catch((err) => {
+                console.log(`Error ao listar os clientes: ${err}`);
+            });
+    }, []);
+
     return(
         <div>
             <SideBar/>
@@ -25,50 +45,19 @@ function Clients(){
                     col4='Pontos'
                     col5='Ações'
                 >
-                    <tr>
-                    <td><img src={user} alt="user"/></td>
-                    <td>Cliente Teste</td>
-                        <td>00.000-0</td>
-                        <td>XX</td>
-                        <td>
-                            <ActionsButtons color='rgb(65, 189, 65)' description='+ pontos'/>
-                            <ActionsButtons color='rgb(250, 143, 71)' description = 'Editar'/>                           
-                            <ActionsButtons color='rgb(238, 84, 84)' description='Excluir'/>
-                        </td>
-                    </tr>
-                    <tr>
-                    <td><img src={user} alt="user"/></td>
-                    <td>Cliente Teste</td>
-                        <td>00.000-0</td>
-                        <td>XX</td>
-                        <td>
-                            <ActionsButtons color='rgb(65, 189, 65)' description='+ pontos'/>
-                            <ActionsButtons color='rgb(250, 143, 71)' description = 'Editar'/>                           
-                            <ActionsButtons color='rgb(238, 84, 84)' description='Excluir'/>
-                        </td>
-                    </tr>
-                    <tr>
-                    <td><img src={user} alt="user"/></td>
-                    <td>Cliente Teste</td>
-                        <td>00.000-0</td>
-                        <td>XX</td>
-                        <td>
-                            <ActionsButtons color='rgb(65, 189, 65)' description='+ pontos'/>
-                            <ActionsButtons color='rgb(250, 143, 71)' description = 'Editar'/>                           
-                            <ActionsButtons color='rgb(238, 84, 84)' description='Excluir'/>
-                        </td>
-                    </tr>
-                    <tr>
-                    <td><img src={user} alt="user"/></td>
-                    <td>Cliente Teste</td>
-                        <td>00.000-0</td>
-                        <td>XX</td>
-                        <td>
-                            <ActionsButtons color='rgb(65, 189, 65)' description='+ pontos'/>
-                            <ActionsButtons color='rgb(250, 143, 71)' description = 'Editar'/>                           
-                            <ActionsButtons color='rgb(238, 84, 84)' description='Excluir'/>
-                        </td>
-                    </tr>
+                    {data.map((item, index) => (
+                        <tr key={index}>
+                            <td><img src={user} alt="user" /></td>
+                            <td>{item.name}</td>
+                            <td>{item.registration}</td>
+                            <td>{item.points}</td>
+                            <td>
+                                <ActionsButtons color='rgb(65, 189, 65)' description='+ pontos'/>
+                                <ActionsButtons color='rgb(250, 143, 71)' description = 'Editar'/>
+                                <ActionsButtons color='rgb(238, 84, 84)' description='Excluir' />
+                            </td>
+                        </tr>
+                    ))}
                 </Table>
 
             </main>

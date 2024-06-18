@@ -20,9 +20,9 @@ module.exports = (req, res) =>{
         contact,
     })
     .then(() =>{
-        res.send('Client created successfuly');
+        res.send({message: 'Client created successfuly'});
     })
     .catch((err) =>{
-        res.send(`Error in create client ${err}`)
+        res.send({message: `Error in create client ${err}`})
     })
 }

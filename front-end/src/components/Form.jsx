@@ -1,19 +1,17 @@
 import styles from './form.css'
 
 
-function Form({label1, label2, label3, children, action}) {
+function Form({ children, onSubmit }) {
+    const handleSubmit = (event) => {
+        event.preventDefault(); 
+        onSubmit(event);  
+    };
+
     return (
-        <form className="formAdd">
-            <label htmlFor="">{label1}</label>
-            <input type="text" />
-            <label htmlFor="">{label2}</label>
-            <input type="text"/>
-            <label htmlFor="">{label3}</label>
-            <input type="text" />
+        <form className="formAdd"  onSubmit={handleSubmit}>
             {children}
-            <button>{action}</button>
         </form>
     )
 }
 
-export default Form 
+export default Form;

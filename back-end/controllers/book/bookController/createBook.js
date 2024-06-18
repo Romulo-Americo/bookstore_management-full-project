@@ -10,9 +10,9 @@ module.exports = (req, res) => {
         price,
     })
     .then(()=>{
-        res.send('Book created successfuly')
+        res.send({ message:'Book created successfuly' })
     })
     .catch(err => {
-        res.status(500).send(`Error in creating book: ${err}`);
+        res.send({ message:`Error in creating book: ${err}` });
     });
 }
