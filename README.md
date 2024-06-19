@@ -1,4 +1,11 @@
 # Sistema de Gerenciamento de uma Livraria
+![telas](https://github.com/Romulo-Americo/bookstore_management-full-project/blob/main/Telas/Login.png)
+![telas](https://github.com/Romulo-Americo/bookstore_management-full-project/blob/main/Telas/Situação.png)
+![telas](https://github.com/Romulo-Americo/bookstore_management-full-project/blob/main/Telas/ListaFuncionario.png)
+![telas](https://github.com/Romulo-Americo/bookstore_management-full-project/blob/main/Telas/ListaLivro.png)
+![telas](https://github.com/Romulo-Americo/bookstore_management-full-project/blob/main/Telas/CadastroLivro.png)
+![telas](https://github.com/Romulo-Americo/bookstore_management-full-project/blob/main/Telas/ListaCliente.png)
+![telas](https://github.com/Romulo-Americo/bookstore_management-full-project/blob/main/Telas/CadastroCliente.png)
 
 ## O que o sistema faz?
 
@@ -115,3 +122,10 @@ O sistema gerencia uma livraria onde clientes podem comprar ou alugar livros. As
   - MySQL
 - **Front-end**
   - React
+ 
+  -**Como usar?**
+  -Adicione o envfiles
+  -Coloque as informações da verificação do Banco
+  -Npm init
+  -Npm start para o front-end e o back end
+  -E fique livre para usar e ajustar ou até melhorar o meu sistema :)
