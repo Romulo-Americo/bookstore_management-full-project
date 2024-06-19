@@ -29,6 +29,29 @@ function Book(){
             });
     }, []);
 
+    const handleDelete = (book_id) =>{
+        fetch(`http://localhost:3000/book/deleteBook/${book_id}`, { method: 'DELETE' })
+        .then(() => {
+            fetch('http://localhost:3000/book/listBooks')
+                .then(res => res.json())
+                .then(data => {
+                    const dataList = data.map(item => ({
+                        name: item.name,
+                        registration: item.registration,
+                        situation: item.situation,
+                        employee_id: item.employee_id 
+                    }));
+                    setData(dataList);
+                    window.location.reload(true);
+                })
+                .catch(err => console.log(`Error ao listar os livros: ${err}`));
+        })
+        .catch(err => {
+            window.alert('Erro ao deletar livro');
+            console.log(err);
+        });
+    }
+
     
     return(
         <div>
@@ -52,12 +75,17 @@ function Book(){
                             <td>{item.author}</td>
                             <td>{item.quantity}</td>
                             <td>
-                                <ActionsButtons color='rgb(83, 167, 206)' description = 'Alugar'/>
-                                <ActionsButtons color='rgb(250, 143, 71)' description = 'Editar'/>
-                                <ActionsButtons color='rgb(238, 84, 84)' description='Excluir' />
+                                <Link to='/rentalBook'>
+                                    <ActionsButtons color='rgb(83, 167, 206)' description = 'Alugar' />
+                                </Link>
+                                <ActionsButtons
+                                    color='rgb(238, 84, 84)'
+                                    description='Excluir'
+                                    onClick={() => handleDelete(item.book_id)}
+                                />
                             </td>
                         </tr>
-                    ))}
+                    ))}  
                 </Table>
             </main>
         </div>

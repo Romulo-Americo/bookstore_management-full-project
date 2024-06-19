@@ -30,6 +30,29 @@ function Clients(){
             });
     }, []);
 
+    const handleDelete = (client_id) =>{
+        fetch(`http://localhost:3000/client/deleteClient/${client_id}`, { method: 'DELETE' })
+        .then(() => {
+            fetch('http://localhost:3000/client/readClient')
+                .then(res => res.json())
+                .then(data => {
+                    const dataList = data.map(item => ({
+                        name: item.name,
+                        registration: item.registration,
+                        situation: item.situation,
+                        employee_id: item.employee_id 
+                    }));
+                    setData(dataList);
+                    window.location.reload(true);
+                })
+                .catch(err => console.log(`Error ao listar os clintes: ${err}`));
+        })
+        .catch(err => {
+            window.alert('Erro ao deletar cliente');
+            console.log(err);
+        });
+    }
+
     return(
         <div>
             <SideBar/>
@@ -53,8 +76,11 @@ function Clients(){
                             <td>{item.points}</td>
                             <td>
                                 <ActionsButtons color='rgb(65, 189, 65)' description='+ pontos'/>
-                                <ActionsButtons color='rgb(250, 143, 71)' description = 'Editar'/>
-                                <ActionsButtons color='rgb(238, 84, 84)' description='Excluir' />
+                                <ActionsButtons
+                                    color='rgb(238, 84, 84)'
+                                    description='Excluir'
+                                    onClick={() => handleDelete(item.client_id)}
+                                />
                             </td>
                         </tr>
                     ))}
